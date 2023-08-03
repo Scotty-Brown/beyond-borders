@@ -5,7 +5,18 @@
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/beyond-borders-logo.png'
+import './images/beyond-borders-logo-NB.png'
 
+import { fetchUserTrips } from './api';
 
-console.log('This is the JavaScript entry file - your code begins here.');
+export const dataModel = {
+    trips: []
+}
+
+window.addEventListener('load', () => {
+    fetchUserTrips('destinations')
+    .then(results => dataModel.trips.push(results))
+    .then(res => console.log(dataModel))
+    .catch(error => console.log('ERROR', error))
+})
