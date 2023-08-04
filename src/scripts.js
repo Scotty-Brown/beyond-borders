@@ -5,18 +5,24 @@
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/beyond-borders-logo.png'
+import './images/bb-NB.png'
 import './images/beyond-borders-logo-NB.png'
 
-import { fetchUserTrips } from './api';
+import { promises } from './api';
 
-export const dataModel = {
-    trips: []
+export const fetchData = {
+    // user: null,
+    travelers: '',
+    trips: '',
+    destinations: ''
 }
 
 window.addEventListener('load', () => {
-    fetchUserTrips('destinations')
-    .then(results => dataModel.trips.push(results))
-    .then(res => console.log(dataModel))
-    .catch(error => console.log('ERROR', error))
+    Promise.all(promises)
+    .then(results => {
+        fetchData.travelers = (results[0])
+        fetchData.trips = (results[1])
+        fetchData.destinations = (results[2])
+        console.log(fetchData)
+    })
 })
