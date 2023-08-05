@@ -1,6 +1,6 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-
+const dayjs = require('dayjs')
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 
@@ -34,31 +34,44 @@ window.addEventListener('load', () => {
         fetchData.destinations = results[2].destinations
         // console.log(fetchData)
     }).then(data => {
-        getTraveler(2)
+        getTraveler(1)
         getTravelerTrips()
     }).then(test => {
         displayTrips()
+        getTripTotal(traveler.trips[0])
     })
 })
 
 ////////dataModel//////////
 const getTraveler = (id) => {
     traveler.info = fetchData.travelers.find((user) => user.id === id)
-    return traveler
+    // return traveler
 }
 
 const getTravelerTrips = () => {
     traveler.trips = fetchData.trips.filter((trip) => trip.userID === traveler.info.id)
-    return traveler.trips
+    // return traveler.trips
 }
 
-// const getLastYearTotalSpent = () => {
+const getTripTotal = (trip) => {
+    let total = 0
+    const destinationDetails = fetchData.destinations.find((entry) => entry.id === trip.destinationID)
+    let totalCostPerPerson = (destinationDetails.estimatedLodgingCostPerDay * trip.duration) + destinationDetails.estimatedFlightCostPerPerson
+    let tripTotal = trip.travelers * totalCostPerPerson
+    total += tripTotal
 
-// }
+    return total
+}
+
+const getTotalSpentOnTrips = (trip) => {
+    const tripCost = traveler.trips.reduce((total, trip) => {
+        // let peopleDay = trip.travelers * trip.duration
+        }, 0)
+        
+}
 
 const createPastTripCardElement = (trip) => {
     const cardElement = document.createElement('article')
-
     cardElement.innerHTML = `
         <div class="trip-card-header">
             <h4 class="trip-card-location">Trip Name: ${trip.destinationID}</h4>
@@ -84,7 +97,7 @@ const createPastTripCardElement = (trip) => {
 const displayTrips = () => {
     const cardContainer = document.getElementById('past-trips-container')
 
-    console.log(traveler.trips)
+    // console.log(traveler.trips)
 
     traveler.trips.forEach(element => {
         const cardElement = createPastTripCardElement(element)
@@ -92,3 +105,4 @@ const displayTrips = () => {
     });
 
 }
+
