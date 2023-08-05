@@ -1,3 +1,68 @@
+* {
+  border: 3px blue solid;
+}
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: nowrap; */
+  width: 100%;
+  height: 100%;
+  background: #E8AA33;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  gap: 10%
+}
+
+.main-nav-section {
+ width: 20%;
+ height: 100%;
+ background: #044040;
+}
+
+.logo { 
+  width: 100%;
+}
+
+.card-display {
+  width: 60%;
+  height: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-display img {
+  width: 100%;
+  height: auto;
+}
+
+.card-display article {
+  width: 30%;
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trip-card-header {
+  height: 60%;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trip-card-location {
+  margin: 0;
+}
+
+.trip-card-body {
+  width: 100%;
+  height: 40%;
 }
