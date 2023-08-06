@@ -15,5 +15,5 @@ export const displayTrips = () => {
 export const displayYTDSpend = () => {
     const totalDisplay = document.getElementById('ytd-spend')
     totalDisplay.innerHTML = ''
-    totalDisplay.innerHTML = `YTD Spend - $${getTotalSpentOnTrips()}`
+    totalDisplay.innerHTML = `YTD Spend: $${getTotalSpentOnTrips()}`
 }
