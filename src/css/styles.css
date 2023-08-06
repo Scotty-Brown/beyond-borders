@@ -1,27 +1,36 @@
 * {
-  border: 3px blue solid;
+  /* border: 3px blue solid; */
 }
 
 body {
   /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   /* flex-wrap: nowrap; */
-  width: 100%;
-  height: 100%;
-  background: #E8AA33;
+  /* width: 100%;
+  height: 100%;  */
+  background: linear-gradient(#044040, #E8AA33);
+  height: 97vh;
 }
 
 main {
-  height: 100vh;
+  height: 100%;
   display: flex;
-  gap: 10%
+  gap: 10%;
+  flex-direction: row;
+  align-items: center;
 }
 
-.main-nav-section {
+.left-header {
  width: 20%;
- height: 100%;
+ height: 100vh;
  background: #044040;
+ margin-left: -8px;
+ margin-bottom: -7px;
+
+ /* wip */
+ box-shadow: 20px 0 #044040;
+ background: linear-gradient(#044040, #E8AA33);
 }
 
 .logo { 
@@ -29,31 +38,39 @@ main {
 }
 
 .card-display {
-  width: 60%;
+  width: 70%;
   height: 85%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  background: #044040;
+  /* background: #044040; */
   border-radius: 5%;
+  padding: 60px;
+  overflow: auto;
 }
 
 .card-display img {
   width: 100%;
   height: auto;
   overflow: hidden ;
+  border-radius: 30px;
 }
 
 .card-display article {
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
   width: 30%;
   height: 45%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 5%;
+  /* border-radius: 5%;
+  box-shadow: 20px 20px #044040; */
+
+  border-radius: 16%;
+    box-shadow: 20px 20px #04404078;
+    border: 50px solid #044040;
 }
 
 .trip-card-header {
@@ -61,13 +78,25 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #044040;
 }
 
 .trip-card-location {
   margin: 0;
+  font-size: 26px;
+  color: antiquewhite;
 }
 
 .trip-card-body {
   width: 100%;
   height: 48%;
+  background: linear-gradient(#044040, #E8AA33);
 }
+
+.trip-details {
+  color: antiquewhite;
+  font-size: 20px;
+}
+
+
+/* box-shadow: inset 0px 0px 20px 76px #E8AA33; */

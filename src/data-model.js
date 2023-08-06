@@ -44,7 +44,7 @@ export const createPastTripCardElement = (trip) => {
     const numNights = trip.duration - 1
     cardElement.innerHTML = `
         <div class="trip-card-header">
-            <h4 class="trip-card-location">Trip Name: ${destinationDetails.destination}</h4>
+            <h4 class="trip-card-location">${destinationDetails.destination}</h4>
             <img src=${destinationDetails.image} alt=${destinationDetails.alt}>
         </div>
         <div class="trip-card-body">
