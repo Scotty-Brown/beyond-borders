@@ -1,3 +1,135 @@
+* {
+  /* border: 3px blue solid; */
+}
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background: linear-gradient(#044040, #E8AA33);
+  height: 97vh;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left-header {
+ width: 20%;
+ height: 100vh;
+ background: #044040;
+ margin-left: -8px;
+ margin-bottom: -7px;
+ box-shadow: 20px 0 #044040;
+ background: linear-gradient(#044040, #E8AA33);
+}
+
+.logo { 
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+    border: 5px dotted #044040;
+    border-radius: 15px;
+    background: #2f4f4f80;
+    margin: 0;
+    color: antiquewhite;
+}
+
+.card-display {
+  width: 72%;
+  height: 102%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  padding-right: 77px;
+}
+
+
+.card-display img {
+  width: 92%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 55px;
+  box-shadow: 0px 20px 20px 2px;
+}
+
+.card-display article {
+  width: 30%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10%;
+  box-shadow: -20px -12px 20px 15px #04404078;
+  border: 35px solid hsla(0, 0%, 0%, 0.1);
+  margin-top: 40px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-display article:hover {
+  transform: scale(1.1);
+}
+.trip-card-header {
+  width: 100%;
+  height: 51%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #044040;
+  border: outset 5px #E8AA33;
+  border-bottom: none;
+}
+
+.trip-card-location {
+  margin: 0;
+  font-size: 26px;
+  color: antiquewhite;
+}
+
+.trip-card-body {
+  width: 100%;
+  height: 48%;
+  background: linear-gradient(#044040, #E8AA33);
+  border: outset 5px #E8AA33;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trip-details {
+  color: antiquewhite;
+  font-size: 20px;
+  text-align: center;
+}
+.trip-cost {
+  color: antiquewhite;
+    font-size: 23px;
+}
+
+.buttons {
+  margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: 90%;
+    gap: 15px;
+}
+
+button {
+  font-size: 20px;
+  background: linear-gradient(#e8aa3326, #e8aa33a6);
+    color: antiquewhite;
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
 }
