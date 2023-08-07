@@ -56,7 +56,7 @@ export const createPastTripCardElement = (trip) => {
         </div>
         <div class="trip-card-body">
             <p class="trip-details">On ${trip.date}, you spent ${trip.duration} days and ${numNights} nights with ${trip.travelers} guests in beautiful ${country}!</p>
-            <p class="trip-cost">Trip Total: $${tripTotal}</p>
+            <p class="trip-cost">Total: $${tripTotal}</p>
         </div>
     `
     return cardElement
