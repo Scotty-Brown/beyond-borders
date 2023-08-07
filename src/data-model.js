@@ -1,8 +1,19 @@
-import { fetchData, traveler } from "./scripts"
+export const fetchData = {
+    // user: null,
+    travelers: [],
+    trips: [],
+    destinations: []
+}
+
+export let traveler = {
+    info: {},
+    trips: []
+}
 
 ////////dataModel//////////
 export const getTraveler = (id) => {
     traveler.info = fetchData.travelers.find((user) => user.id === id)
+    // return traveler.info
 }
 
 export const getTravelerTrips = () => {
@@ -30,21 +41,51 @@ export const getTotalSpentOnTrips = () => {
 }
 
 export const createPastTripCardElement = (trip) => {
-    const cardElement = document.createElement('article')
     const destinationDetails = getDestinationDetails(trip)
     const country = destinationDetails.destination.split(',')[1]
     const tripTotal = (getTripTotal(trip)).toLocaleString()
     const numNights = trip.duration - 1
-    cardElement.innerHTML = `
+    const cardElement = document.createElement('article')
+    console.log(trip)
+    if (trip.status === 'approved') {
+        cardElement.classList.add('past-trips')
+        cardElement.innerHTML = `
         <div class="trip-card-header">
-            <h4 class="trip-card-location">${destinationDetails.destination}</h4>
+            <h2 class="trip-card-location">${destinationDetails.destination}</h2>
             <img src=${destinationDetails.image} alt=${destinationDetails.alt}>
         </div>
         <div class="trip-card-body">
-        <p class="trip-details">On ${trip.date}, you spent ${trip.duration} days and ${numNights} nights with ${trip.travelers} guests in beautiful ${country}!</p>
-        <p class="trip-cost">Trip Total: $${tripTotal}</p>
+            <p class="trip-details">On ${trip.date}, you spent ${trip.duration} days and ${numNights} nights with ${trip.travelers} guests in beautiful ${country}!</p>
+            <p class="trip-cost">Trip Total: $${tripTotal}</p>
         </div>
     `
     return cardElement
+    } else if (trip.status === 'pending') {
+        cardElement.classList.add('pending-trip')
+        cardElement.innerHTML = `
+        <div class="trip-card-header pending-header">
+            <h2 class="trip-card-location">${destinationDetails.destination}</h2>
+            <img src=${destinationDetails.image} alt=${destinationDetails.alt}>
+        </div>
+        <div class="trip-card-body pending-body">
+            <p class="trip-details past-trip-details">Trip Date: ${trip.date}</p>
+            <p class="trip-details past-trip-details">Duration: ${trip.duration}</p>
+            <p class="trip-details past-trip-details">Guests: ${trip.travelers}</p>
+            <p class="trip-details past-trip-details">Status: ${trip.status}</p>
+            <p class="trip-cost past-trip-details">Est. Trip Total: $${tripTotal}</p>
+        </div>
+        `
+        return cardElement
+    }
 
+}
+
+export const createSelectionDestinations = () => {
+    const dropDown = document.getElementById('destination')
+    return fetchData.destinations.forEach((element) => {
+        const option = document.createElement('option')
+        option.value = element.id
+        option.text = element.destination
+        dropDown.appendChild(option)
+    })
 }
