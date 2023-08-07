@@ -30,15 +30,16 @@ main {
 
 h1 {
   text-align: center;
-    border: 5px dotted #044040;
-    border-radius: 15px;
-    background: #2f4f4f80;
-    margin: 0;
-    color: antiquewhite;
+  border: 1px solid #044040;
+  border-radius: -3px;
+  font-size: 20px;
+  color: antiquewhite;
+  background: #044040;
+  box-shadow: -6px -1px 20px 20px #044040;
 }
 
 .card-display {
-  width: 72%;
+  width: 360px;
   height: 102%;
   display: flex;
   flex-direction: row;
@@ -46,27 +47,26 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
   overflow: auto;
-  padding-right: 77px;
 }
 
 
 .card-display img {
   width: 92%;
   height: auto;
-  overflow: hidden;
-  border-radius: 55px;
-  box-shadow: 0px 20px 20px 2px;
+  border-radius: 5px;
+  box-shadow: 0px -1px 10px 6px;
+  height: 70%;
 }
 
 .card-display article {
-  width: 30%;
+  width: 70%;
   height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10%;
-  box-shadow: -20px -12px 20px 15px #04404078;
-  border: 35px solid hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0px 0px 20px 5px #e8aa33;
+  border: 35px solid #145757;
   margin-top: 40px;
   transition: transform 0.2s ease-in-out;
 }
@@ -89,6 +89,7 @@ h1 {
   margin: 0;
   font-size: 26px;
   color: antiquewhite;
+  padding-bottom: 10px;
 }
 
 .trip-card-body {
@@ -124,12 +125,69 @@ h1 {
 }
 
 button {
-  font-size: 20px;
+  /* font-size: 20px;
   background: linear-gradient(#e8aa3326, #e8aa33a6);
     color: antiquewhite;
+    transition: transform 0.2s ease-in-out; */
+
+    font-size: 20px;
+    color: antiquewhite;
     transition: transform 0.2s ease-in-out;
+    background: #044040b5;
+    box-shadow: 0px 0px 5px 0px #e8aa33;
 }
+
 
 button:hover {
   transform: scale(1.1);
+}
+
+.form {
+  display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 52%;
+    height: 100%;
+    align-items: center;
+}
+
+.pending-card-display {
+  height: 45%;
+  width: 100%;
+}
+
+#booking-Form {
+  width: 100%;
+    align-items: center;
+    display: flex;
+    height: 100px;
+}
+
+.pending-trip {
+  display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    height: 45% !important;
+}
+
+.pending-header {
+  height: 100%;
+    border: outset 5px #E8AA33;
+    border-right: none;
+}
+
+.pending-body {
+  height: 100%;
+  border: outset 5px #E8AA33;
+    border-left: none;
+}
+
+.past-trip-details {
+  display: flex;
+    align-items: center;
+    flex-direction: column;
+  margin: 0;
+  width: 100%;
+  height: 20%;
+  font-size: 20px;
 }
