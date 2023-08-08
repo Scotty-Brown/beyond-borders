@@ -10,38 +10,42 @@
   <main>
     <header class="left-header">
       <img class="logo" src="./images/bb-NB.png" alt="turing logo">
-      <h1 id="ytd-spend">YTD Spend</h1>
+      <h1 class="hidden" id="ytd-spend">YTD Spend</h1>
     </header>
-    </div> 
-    </div class="form-pending-display">
-      <div class="form">
-        <h1 class="form-header">Book a new trip:</h1>
-        <form id="booking-Form" class="hidden">
-          <label for="date-Picker">Select Date:</label>
-          <input type="date" id="date-Picker" required><br>
-          <label for="num-Nights">Number of Nights:</label>
-          <input type="number" id="num-Nights" min="1" required><br>
-          <label for="num-Guests">Number of Guests:</label>
-          <input type="number" id="num-Guests" min="1" required><br>
-          <label for="destination">Select Destination:</label>
-          <select id="destination" required>
-            <option value="" disabled selected>Select Destination</option>
-          </select><br>
-          <button id="get-estimate-button" type="submit">Get Estimate</button>
-        </form>
-        <button class="back-to-form-button hidden" id="back-to-form-button" type="submit">Back To Form</button>
-        <button class="book-trip-button hidden" id="book-trip-button" type="submit">Book Trip</button>
+
+    <section class="hidden"> 
+      </div class="form-pending-display">
+        <div class="form">
+          <h1 class="form-header">Book a new trip:</h1>
+          <form id="booking-Form" class="hidden">
+            <label for="date-Picker">Select Date:</label>
+            <input type="date" id="date-Picker" required><br>
+            <label for="num-Nights">Number of Nights:</label>
+            <input type="number" id="num-Nights" min="1" required><br>
+            <label for="num-Guests">Number of Guests:</label>
+            <input type="number" id="num-Guests" min="1" required><br>
+            <label for="destination">Select Destination:</label>
+            <select id="destination" required>
+              <option value="" disabled selected>Select Destination</option>
+            </select><br>
+            <button id="get-estimate-button" type="submit">Get Estimate</button>
+          </form>
+          <button class="back-to-form-button hidden" id="back-to-form-button" type="submit">Back To Form</button>
+          <button class="book-trip-button hidden" id="book-trip-button" type="submit">Book Trip</button>
+        </div>
         <div id="trip-estimate-display" class="trip-estimate-display hidden">
         </div>
-  </div>
-  <div class="buttons">
-    <button class="past-trips-button">Past Trips</button>
-    <button class="upcoming-trips-button">Upcoming Trips</button>
-    <!-- <button>Book Trip</button> -->
-  </div>
-    <div id="past-trips-container" class="card-display past">
-    </div>
-  </main>
+      </div>
+
+      
+      <div class="buttons">
+        <button class="past-trips-button">Past Trips</button>
+        <button class="upcoming-trips-button">Upcoming Trips</button>
+        <!-- <button>Book Trip</button> -->
+      </div>
+      <div id="past-trips-container" class="card-display past"></div>
+    </section>  
+    </main>
   <script src="bundle.js"></script>
 </body>
 </html>
