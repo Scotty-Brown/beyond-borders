@@ -66,7 +66,7 @@ export const createPastTripCardElement = (trip) => {
     const tripTotal = (getTripTotal(trip)).toLocaleString()
     const numNights = trip.duration - 1
     const cardElement = document.createElement('article')
-    console.log(trip)
+    // console.log(trip)
     if (trip.status === 'approved') {
         cardElement.classList.add('past-trips')
         cardElement.innerHTML = `

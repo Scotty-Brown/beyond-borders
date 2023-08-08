@@ -1,4 +1,5 @@
 
+import { use } from "chai";
 import { traveler } from "./data-model";
 import { createPastTripCardElement, getTotalSpentOnTrips } from "./data-model";
 //////domUpdates/////////
@@ -57,6 +58,6 @@ export const handleBackToFormClick = () => {
 
 
     bookForm.id = "booking-Form"
-    console.log(bookForm)
     // bookForm.id.remove('hidden')
 }
+
