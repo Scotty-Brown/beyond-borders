@@ -8,9 +8,9 @@ import './css/styles.css';
 import './images/bb-NB.png'
 import './images/beyond-borders-logo-NB.png'
 
-import { promises } from './api';
+import { promises, postUserTrip, fetchUserTrips } from './api';
 import { getTraveler, getTravelerTrips, getTotalSpentOnTrips, createSelectionDestinations, fetchData, traveler, captureFormInput, getTripTotal } from './data-model';
-import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick } from './dom-updates';
+import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick, handleLogIn } from './dom-updates';
 
 const pastTripsContainer = document.querySelector('.past-trips-container')
 const pastTripsButton = document.querySelector('.past-trips-button')
@@ -19,11 +19,17 @@ const getEstimateButton = document.querySelector('#get-estimate-button')
 const backToFormButton = document.querySelector('#back-to-form-button')
 const bookTripButton = document.querySelector('#book-trip-button')
 const bookForm = document.querySelector('#booking-form')
+const logInButton = document.querySelector('#log-in-button')
 
 const dateInput = document.querySelector('#date-Picker')
 const numNightsInput = document.querySelector('#num-Nights')
 const numGuestInput = document.querySelector('#num-Guests')
 const destinationSelection = document.querySelector('#destination')
+const userName = document.querySelector('#username')
+const passWord = document.querySelector('#password')
+
+
+let tripCapture = {}
 
 window.addEventListener('load', () => {
     Promise.all(promises)
@@ -31,17 +37,18 @@ window.addEventListener('load', () => {
         fetchData.travelers = results[0].travelers
         fetchData.trips = results[1].trips
         fetchData.destinations = results[2].destinations
-        // console.log(fetchData)
     }).then(data => {
-        getTraveler(2)
+        getTraveler(3)
         getTravelerTrips()
     }).then(test => {
-
-        console.log(traveler.trips[0])
         displayYTDSpend()
         createSelectionDestinations()
-        // displayUpcomingTrips()
     })
+})
+
+logInButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    handleLogIn(userName.value, passWord.value)
 })
 
 pastTripsButton.addEventListener('click', () => {
@@ -55,20 +62,39 @@ upcomingTripsButton.addEventListener('click', () => {
 getEstimateButton.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const trip = captureFormInput(dateInput.value, numNightsInput.value, numGuestInput.value, destinationSelection.value)
+    tripCapture = captureFormInput(dateInput.value, numNightsInput.value, numGuestInput.value, destinationSelection.value)
 
     backToFormButton.classList.remove('hidden')
     bookTripButton.classList.remove('hidden')
-    displayTripEstimate(trip)
+    displayTripEstimate(tripCapture)
 
 })
 
 backToFormButton.addEventListener('click', (e) => {
     e.preventDefault()
-console.log(e)
     ////put this in a handle click function
     backToFormButton.classList.add('hidden')
     bookTripButton.classList.add('hidden')
     handleBackToFormClick()
     
+})
+
+bookTripButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    tripCapture = captureFormInput(dateInput.value, numNightsInput.value, numGuestInput.value, destinationSelection.value)
+
+    postUserTrip(tripCapture)
+    .then(res => {
+            fetchUserTrips('trips')
+            .then(results => {
+                console.log('results', results.trips)
+                console.log('before', fetchData.trips)
+                traveler.trips = results.trips
+                console.log('after', fetchData.trips)
+
+            })
+        }).then(data => {
+            getTravelerTrips()
+            displayUpcomingTrips()
+        })
 })

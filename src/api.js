@@ -3,6 +3,16 @@ export const fetchUserTrips = (dataType) => {
         .then(response => response.json())
 }
 
+export const postUserTrip = (trip) => {
+    return fetch(`http://localhost:3001/api/v1/trips`, {
+        method: 'POST',
+        body: JSON.stringify(trip),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => response.json())
+}
+
 export const promises = [
     fetchUserTrips('travelers'),
     fetchUserTrips('trips'),
