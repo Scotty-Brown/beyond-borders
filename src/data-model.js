@@ -1,3 +1,5 @@
+import { displayYTDSpend } from './dom-updates'
+
 const dayjs = require('dayjs')
 
 export const fetchData = {
@@ -9,14 +11,14 @@ export const fetchData = {
 
 export let traveler = {
     info: {},
-    trips: []
+    trips: [],
+    login: false
 }
 
 
 ////////dataModel//////////
 export const getTraveler = (id) => {
     traveler.info = fetchData.travelers.find((user) => user.id === id)
-    // return traveler.info
 }
 
 export const getTravelerTrips = () => {
@@ -29,7 +31,6 @@ export const getDestinationDetails = (trip) => {
 
 export const getTripTotal = (trip) => {
     const destinationDetails = getDestinationDetails(trip)
-    // console.log(destinationDetails)
     let totalCostPerPerson = (destinationDetails.estimatedLodgingCostPerDay * trip.duration) + destinationDetails.estimatedFlightCostPerPerson
     let tripTotal = trip.travelers * totalCostPerPerson
 
@@ -48,7 +49,6 @@ export const captureFormInput = (date, numNights, NumGuests, destination) => {
         "status": "pending",
         "suggestedActivities": []
     }
-    // console.log(tripRequest)
     return tripRequest
 }
 
@@ -66,7 +66,6 @@ export const createPastTripCardElement = (trip) => {
     const tripTotal = (getTripTotal(trip)).toLocaleString()
     const numNights = trip.duration - 1
     const cardElement = document.createElement('article')
-    // console.log(trip)
     if (trip.status === 'approved') {
         cardElement.classList.add('past-trips')
         cardElement.innerHTML = `
@@ -110,5 +109,19 @@ export const createSelectionDestinations = () => {
     })
 }
 
+export const handleLogIn = (userName, passWord) => {
+    const prefix = 'traveler'
+    if (passWord != 'travel') {
+        return console.log('Incorrect Password')
+    } else if (userName.startsWith(prefix)) {
+        const numValue = userName.substring(prefix.length)
+        const userNum = parseInt(numValue)
+        getTraveler(userNum)
+        getTravelerTrips()
+        displayYTDSpend()
+        createSelectionDestinations()
+        traveler.login = true
+    }
+}
 
 

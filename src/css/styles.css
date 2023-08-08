@@ -37,6 +37,14 @@ h1 {
   box-shadow: -6px -1px 20px 20px #044040;
 }
 
+.log-In {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .booking-display {
     width: 100%;
     display: flex;
@@ -112,16 +120,6 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
-  /* width: 100%;
-  height: 48%;
-  background: linear-gradient(#044040, #E8AA33);
-  border: outset 5px #E8AA33;
-  border-top: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between; */
 }
 
 .trip-details {
@@ -141,15 +139,10 @@ h1 {
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  /* height: 90%; */
   gap: 15px;
 }
 
 button {
-  /* font-size: 20px;
-  background: linear-gradient(#e8aa3326, #e8aa33a6);
-  color: antiquewhite;
-  transition: transform 0.2s ease-in-out; */
   width: 70%;
   padding:5px;
   border-radius:10px;
@@ -245,46 +238,40 @@ input {
   width: 275px;
   margin-bottom: 5px;
 }
+  
+.trip-estimate-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  
+.estimate-pic {
+  width: 92%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0px -1px 10px 6px;
+  height: 70%;
+}
+  
+.estimate-display-card {
+  margin-top: 3%;
+  width: 355px;
+  height: 585px;
+}
 
-/* .trip-estimate-display {
-  margin-left: 40px;
-  margin-right: 40px;
-  /* margin-top: 60px; */
-  
-  
-  .trip-estimate-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .estimate-pic {
-    width: 92%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0px -1px 10px 6px;
-    height: 70%;
-  }
-  
-  .estimate-display-card {
-    margin-top: 3%;
-    width: 355px;
-    height: 585px;
-  }
-
-  .form-pending-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 9%;
-    padding-right: 40px;
+.form-pending-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 9%;
+  padding-right: 40px;
 }
 
 
-  .hidden {
-    display: none;
-  }
+.hidden {
+  display: none;
+}
 
-  .hidden-form {
-    display: none;
-  }
+.hidden-form {
+   display: none;
+}

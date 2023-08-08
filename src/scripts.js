@@ -9,8 +9,8 @@ import './images/bb-NB.png'
 import './images/beyond-borders-logo-NB.png'
 
 import { promises, postUserTrip, fetchUserTrips } from './api';
-import { getTraveler, getTravelerTrips, getTotalSpentOnTrips, createSelectionDestinations, fetchData, traveler, captureFormInput, getTripTotal } from './data-model';
-import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick, handleLogIn } from './dom-updates';
+import { getTraveler, getTravelerTrips, getTotalSpentOnTrips, createSelectionDestinations, fetchData, traveler, captureFormInput, getTripTotal, handleLogIn } from './data-model';
+import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick } from './dom-updates';
 
 const pastTripsContainer = document.querySelector('.past-trips-container')
 const pastTripsButton = document.querySelector('.past-trips-button')
@@ -20,6 +20,9 @@ const backToFormButton = document.querySelector('#back-to-form-button')
 const bookTripButton = document.querySelector('#book-trip-button')
 const bookForm = document.querySelector('#booking-form')
 const logInButton = document.querySelector('#log-in-button')
+const logInForm = document.querySelector('.log-In')
+const dashboard = document.querySelector('.booking-display')
+const YTDSpend = document.querySelector('#ytd-spend')
 
 const dateInput = document.querySelector('#date-Picker')
 const numNightsInput = document.querySelector('#num-Nights')
@@ -37,19 +40,18 @@ window.addEventListener('load', () => {
         fetchData.travelers = results[0].travelers
         fetchData.trips = results[1].trips
         fetchData.destinations = results[2].destinations
-    }).then(data => {
-        getTraveler(3)
-        getTravelerTrips()
-    }).then(test => {
-        displayYTDSpend()
-        createSelectionDestinations()
     })
 })
 
-// logInButton.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     handleLogIn(userName.value, passWord.value)
-// })
+logInButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    handleLogIn(userName.value, passWord.value)
+    if (traveler.login) {
+        logInForm.classList.add('hidden')
+        dashboard.classList.remove('hidden')
+        YTDSpend.classList.remove('hidden')
+    }
+})
 
 pastTripsButton.addEventListener('click', () => {
     displayTrips()
@@ -72,7 +74,6 @@ getEstimateButton.addEventListener('click', (e) => {
 
 backToFormButton.addEventListener('click', (e) => {
     e.preventDefault()
-    ////put this in a handle click function
     backToFormButton.classList.add('hidden')
     bookTripButton.classList.add('hidden')
     handleBackToFormClick()
