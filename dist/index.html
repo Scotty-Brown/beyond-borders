@@ -12,32 +12,30 @@
       <img class="logo" src="./images/bb-NB.png" alt="turing logo">
       <h1 id="ytd-spend">YTD Spend</h1>
     </header>
-    <div class="buttons hidden">
-      <button>Past Trips</button>
-      <button>Upcoming Trips</button>
-      <button>Book Trip</button>
-    </div>
+    </div> 
     </div class="form-pending-display">
       <div class="form">
-        <form id="booking-Form">
+        <h1 class="form-header">Book a new trip:</h1>
+        <form id="booking-Form" class="hidden">
           <label for="date-Picker">Select Date:</label>
           <input type="date" id="date-Picker" required><br>
-          
           <label for="num-Nights">Number of Nights:</label>
           <input type="number" id="num-Nights" min="1" required><br>
-          
           <label for="num-Guests">Number of Guests:</label>
           <input type="number" id="num-Guests" min="1" required><br>
-          
           <label for="destination">Select Destination:</label>
           <select id="destination" required>
             <option value="" disabled selected>Select Destination</option>
           </select><br>
-          <button type="submit">Submit</button>
+          <button id="get-estimate-button" type="submit">Get Estimate</button>
         </form>
-        <div id="pending-display" class="card-display pending-card-display">
+        <div id="trip-estimate-display" class="trip-estimate-display hidden">
         </div>
-    </div>
+  </div>
+  <div class="buttons">
+    <button class="past-trips-button">Past Trips</button>
+    <button class="upcoming-trips-button">Upcoming Trips</button>
+    <!-- <button>Book Trip</button> -->
   </div>
     <div id="past-trips-container" class="card-display past">
     </div>
