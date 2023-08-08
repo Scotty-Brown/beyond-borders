@@ -4,7 +4,7 @@ import { createPastTripCardElement, getTotalSpentOnTrips } from "./data-model";
 //////domUpdates/////////
 export const displayTrips = () => {
     const cardContainer = document.getElementById('past-trips-container')
-
+    cardContainer.innerHTML = ''
     traveler.trips.forEach(element => {
         if (element.status === 'approved') {
         const cardElement = createPastTripCardElement(element)
@@ -15,11 +15,12 @@ export const displayTrips = () => {
 }
 
 export const displayUpcomingTrips = () => {
-    const cardContainers = document.getElementById('pending-display')
+    const cardContainer = document.getElementById('past-trips-container')
+    cardContainer.innerHTML = ''
     traveler.trips.forEach((element) => {
         if (element.status === 'pending') {
         const cardElements = createPastTripCardElement(element)
-        cardContainers.appendChild(cardElements)
+        cardContainer.appendChild(cardElements)
     }
     })
 }
@@ -28,4 +29,13 @@ export const displayYTDSpend = () => {
     const totalDisplay = document.getElementById('ytd-spend')
     totalDisplay.innerHTML = ''
     totalDisplay.innerHTML = `YTD Spend: $${getTotalSpentOnTrips()}`
+}
+
+export const displayTripEstimate = (trip) => {
+    const estimateDisplay = document.getElementById('trip-estimate-display')
+    const form = document.getElementById('booking-Form')
+    form.id = 'hidden'
+    estimateDisplay.classList.remove('hidden')
+    const cardElement = createPastTripCardElement(trip)
+    estimateDisplay.appendChild(cardElement)
 }
