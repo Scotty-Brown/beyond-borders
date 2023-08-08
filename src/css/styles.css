@@ -10,13 +10,12 @@ body {
 main {
   height: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .left-header {
  width: 20%;
- height: 100vh;
+ height: 98vh;
  background: #044040;
  margin-left: -8px;
  margin-bottom: -7px;
@@ -120,9 +119,9 @@ h1 {
   margin-left: 30px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-end;
     justify-content: flex-start;
-    height: 90%;
+    /* height: 90%; */
     gap: 15px;
 }
 
@@ -131,6 +130,9 @@ button {
   background: linear-gradient(#e8aa3326, #e8aa33a6);
     color: antiquewhite;
     transition: transform 0.2s ease-in-out; */
+    width: 70%;
+    padding:10px;
+    border-radius:10px;
 
     font-size: 20px;
     color: antiquewhite;
@@ -148,7 +150,7 @@ button:hover {
   display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 65%;
+    width: 33%;
     height: 100%;
     align-items: center;
 }
@@ -163,6 +165,7 @@ button:hover {
     align-items: center;
     display: flex;
     height: 54%;
+    flex-direction: column;
 }
 
 .pending-trip {
@@ -196,4 +199,39 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+label {
+  color: antiquewhite;
+  font-size: 20px;
+}
+
+select {
+  width: 70%;
+  padding:10px;
+  border-radius:10px;
+}
+
+input {
+  width: 70%;
+  padding:10px;
+  border-radius:10px;
+}
+
+.form-header {
+  font-size: 30px;
+}
+
+.trip-estimate-display {
+  margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 60px;
+}
+
+.estimate-pic {
+  width: 92%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0px -1px 10px 6px;
+  height: 70%;
 }
