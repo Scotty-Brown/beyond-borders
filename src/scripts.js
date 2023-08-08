@@ -46,10 +46,10 @@ window.addEventListener('load', () => {
     })
 })
 
-logInButton.addEventListener('click', (e) => {
-    e.preventDefault()
-    handleLogIn(userName.value, passWord.value)
-})
+// logInButton.addEventListener('click', (e) => {
+//     e.preventDefault()
+//     handleLogIn(userName.value, passWord.value)
+// })
 
 pastTripsButton.addEventListener('click', () => {
     displayTrips()
@@ -88,13 +88,16 @@ bookTripButton.addEventListener('click', (e) => {
             fetchUserTrips('trips')
             .then(results => {
                 console.log('results', results.trips)
-                console.log('before', fetchData.trips)
-                traveler.trips = results.trips
-                console.log('after', fetchData.trips)
+                console.log('before', traveler.trips)
+                fetchData.trips = results.trips
+                console.log('after', traveler.trips)
 
+            }).then(data => {
+                console.log('hey')
+                getTravelerTrips()
+                displayUpcomingTrips()
             })
-        }).then(data => {
-            getTravelerTrips()
-            displayUpcomingTrips()
         })
+        
+        
 })
