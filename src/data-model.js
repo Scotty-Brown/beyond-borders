@@ -1,3 +1,5 @@
+const dayjs = require('dayjs')
+
 export const fetchData = {
     // user: null,
     travelers: [],
@@ -9,6 +11,7 @@ export let traveler = {
     info: {},
     trips: []
 }
+
 
 ////////dataModel//////////
 export const getTraveler = (id) => {
@@ -26,10 +29,27 @@ export const getDestinationDetails = (trip) => {
 
 export const getTripTotal = (trip) => {
     const destinationDetails = getDestinationDetails(trip)
+    // console.log(destinationDetails)
     let totalCostPerPerson = (destinationDetails.estimatedLodgingCostPerDay * trip.duration) + destinationDetails.estimatedFlightCostPerPerson
     let tripTotal = trip.travelers * totalCostPerPerson
 
     return (tripTotal * 1.1)
+}
+
+export const captureFormInput = (date, numNights, NumGuests, destination) => {
+    const formattedDate = dayjs(date).format('YYYY/MM/DD')
+    const tripRequest =  {
+        "id": Date.now(),
+        "userID": parseInt(traveler.info.id),
+        "destinationID": parseInt(destination),
+        "travelers": parseInt(NumGuests),
+        "date": formattedDate,
+        "duration": parseInt(numNights),
+        "status": "pending",
+        "suggestedActivities": []
+    }
+    // console.log(tripRequest)
+    return tripRequest
 }
 
 export const getTotalSpentOnTrips = () => {
@@ -46,7 +66,7 @@ export const createPastTripCardElement = (trip) => {
     const tripTotal = (getTripTotal(trip)).toLocaleString()
     const numNights = trip.duration - 1
     const cardElement = document.createElement('article')
-    console.log(trip)
+    // console.log(trip)
     if (trip.status === 'approved') {
         cardElement.classList.add('past-trips')
         cardElement.innerHTML = `
@@ -61,18 +81,18 @@ export const createPastTripCardElement = (trip) => {
     `
     return cardElement
     } else if (trip.status === 'pending') {
-        cardElement.classList.add('pending-trip')
+        cardElement.classList.add('past-trips')
         cardElement.innerHTML = `
-        <div class="trip-card-header pending-header">
+        <div class="trip-card-header form-remove">
             <h2 class="trip-card-location">${destinationDetails.destination}</h2>
-            <img src=${destinationDetails.image} alt=${destinationDetails.alt}>
+            <img class="estimate-pic" src=${destinationDetails.image} alt=${destinationDetails.alt}>
         </div>
-        <div class="trip-card-body pending-body">
-            <p class="trip-details past-trip-details">Trip Date: ${trip.date}</p>
-            <p class="trip-details past-trip-details">Duration: ${trip.duration}</p>
-            <p class="trip-details past-trip-details">Guests: ${trip.travelers}</p>
-            <p class="trip-details past-trip-details">Status: ${trip.status}</p>
-            <p class="trip-cost past-trip-details">Est. Trip Total: $${tripTotal}</p>
+        <div class="trip-card-body form-remove">
+            <p class="trip-details">Trip Date: ${trip.date}</p>
+            <p class="trip-details">Duration: ${trip.duration}</p>
+            <p class="trip-details">Guests: ${trip.travelers}</p>
+            <p class="trip-details">Status: ${trip.status}</p>
+            <p class="trip-cost">Est. Trip Total: $${tripTotal}</p>
         </div>
         `
         return cardElement
@@ -89,3 +109,6 @@ export const createSelectionDestinations = () => {
         dropDown.appendChild(option)
     })
 }
+
+
+
