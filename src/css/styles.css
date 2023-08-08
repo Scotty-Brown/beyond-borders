@@ -69,7 +69,7 @@ h1 {
   margin-top: 40px;
   transition: transform 0.2s ease-in-out;
   margin-left: 30px;
-    margin-right: 30px;
+  margin-right: 30px;
 }
 
 .card-display article:hover {
@@ -95,50 +95,61 @@ h1 {
 
 .trip-card-body {
   width: 100%;
+  height: 40%;
+  background: linear-gradient(#044040, #E8AA33);
+  border: outset 5px #E8AA33;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* width: 100%;
   height: 48%;
   background: linear-gradient(#044040, #E8AA33);
   border: outset 5px #E8AA33;
-    border-top: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; */
 }
 
 .trip-details {
   color: antiquewhite;
   font-size: 20px;
   text-align: center;
+  margin: 0;
 }
 .trip-cost {
   color: antiquewhite;
-    font-size: 23px;
+  font-size: 23px;
 }
 
 .buttons {
-  margin-left: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    /* height: 90%; */
-    gap: 15px;
+  margin-left: -25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  /* height: 90%; */
+  gap: 15px;
 }
 
 button {
   /* font-size: 20px;
   background: linear-gradient(#e8aa3326, #e8aa33a6);
-    color: antiquewhite;
-    transition: transform 0.2s ease-in-out; */
-    width: 70%;
-    padding:10px;
-    border-radius:10px;
-
-    font-size: 20px;
-    color: antiquewhite;
-    transition: transform 0.2s ease-in-out;
-    background: #044040b5;
-    box-shadow: 0px 0px 5px 0px #e8aa33;
+  color: antiquewhite;
+  transition: transform 0.2s ease-in-out; */
+  width: 70%;
+  padding:5px;
+  border-radius:10px;
+  gap: 10px;
+  font-size: 20px;
+  color: antiquewhite;
+  transition: transform 0.2s ease-in-out;
+  background: #044040b5;
+  box-shadow: 0px 0px 5px 0px #e8aa33;
 }
 
 
@@ -148,11 +159,11 @@ button:hover {
 
 .form {
   display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 33%;
-    height: 100%;
-    align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 33%;
+  height: 100%;
+  align-items: center;
 }
 
 .pending-card-display {
@@ -162,44 +173,41 @@ button:hover {
 
 #booking-Form {
   width: 100%;
-    align-items: center;
-    display: flex;
-    height: 54%;
-    flex-direction: column;
+  align-items: center;
+  display: flex;
+  height: 54%;
+  flex-direction: column;
 }
 
 .pending-trip {
   display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    height: 45% !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  height: 45% !important;
 }
 
 .pending-header {
   height: 100%;
-    border: outset 5px #E8AA33;
-    border-right: none;
+  border: outset 5px #E8AA33;
+  border-right: none;
 }
 
 .pending-body {
   height: 100%;
   border: outset 5px #E8AA33;
-    border-left: none;
+  border-left: none;
 }
 
 .past-trip-details {
   display: flex;
-    align-items: center;
-    flex-direction: column;
+  align-items: center;
+  flex-direction: column;
   margin: 0;
   width: 100%;
   height: 20%;
   font-size: 20px;
 }
 
-.hidden {
-  display: none;
-}
 
 label {
   color: antiquewhite;
@@ -222,16 +230,36 @@ input {
   font-size: 30px;
 }
 
-.trip-estimate-display {
+/* .trip-estimate-display {
   margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 60px;
-}
+  margin-right: 40px;
+  /* margin-top: 60px; */
+  
+  
+  .trip-estimate-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .estimate-pic {
+    width: 92%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px -1px 10px 6px;
+    height: 70%;
+  }
+  
+  .estimate-display-card {
+    margin-top: 3%;
+    width: 355px;
+    height: 585px;
+  }
 
-.estimate-pic {
-  width: 92%;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 0px -1px 10px 6px;
-  height: 70%;
-}
+  .hidden {
+    display: none;
+  }
+
+  .hidden-form {
+    display: none;
+  }

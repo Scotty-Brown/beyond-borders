@@ -83,11 +83,11 @@ export const createPastTripCardElement = (trip) => {
     } else if (trip.status === 'pending') {
         cardElement.classList.add('past-trips')
         cardElement.innerHTML = `
-        <div class="trip-card-header">
+        <div class="trip-card-header form-remove">
             <h2 class="trip-card-location">${destinationDetails.destination}</h2>
             <img class="estimate-pic" src=${destinationDetails.image} alt=${destinationDetails.alt}>
         </div>
-        <div class="trip-card-body">
+        <div class="trip-card-body form-remove">
             <p class="trip-details">Trip Date: ${trip.date}</p>
             <p class="trip-details">Duration: ${trip.duration}</p>
             <p class="trip-details">Guests: ${trip.travelers}</p>
