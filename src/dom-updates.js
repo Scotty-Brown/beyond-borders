@@ -29,21 +29,18 @@ export const displayUpcomingTrips = () => {
 export const displayYTDSpend = () => {
     const totalDisplay = document.getElementById('ytd-spend')
     totalDisplay.innerHTML = ''
-    totalDisplay.innerHTML = `YTD Spend: $${getTotalSpentOnTrips()}`
+    totalDisplay.innerHTML = `Welcome ${traveler.info.name}! <br> -YTD Spend- <br> $${getTotalSpentOnTrips()}`
 }
 
 export const displayTripEstimate = (trip) => {
     const estimateDisplay = document.getElementById('trip-estimate-display')
     const form = document.getElementById('booking-Form')
-    // const backToFormButton = document.createElement('button')
-    // backToFormButton.textContent = 'Back To Form'
     form.id = 'hidden-form'
     estimateDisplay.classList.remove('hidden')
     estimateDisplay.innerHTML = ''
     const cardElement = createPastTripCardElement(trip)
     cardElement.classList.add('estimate-display-card')
     estimateDisplay.appendChild(cardElement)
-    // estimateDisplay.appendChild(backToFormButton)
 }
 
 export const handleBackToFormClick = () => {
@@ -51,13 +48,9 @@ export const handleBackToFormClick = () => {
     const bookForm = document.getElementById('hidden-form')
     const clearForm = document.querySelectorAll('.form-remove')
     const estimateCardElement = document.querySelector('.estimate-display-card')
-    
-    // clearForm.forEach(div => div.remove())
     tripEstimateDisplay.classList.add('hidden')
     tripEstimateDisplay.removeChild(estimateCardElement)
-
-
     bookForm.id = "booking-Form"
-    // bookForm.id.remove('hidden')
 }
+
 
