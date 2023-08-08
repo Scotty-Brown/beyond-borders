@@ -10,10 +10,18 @@
   <main>
     <header class="left-header">
       <img class="logo" src="./images/bb-NB.png" alt="turing logo">
-      <h1 class="" id="ytd-spend">YTD Spend</h1>
+      <h1 class="hidden" id="ytd-spend">YTD Spend</h1>
     </header>
-
-    <section class="booking-display"> 
+    <section class="log-In">
+      <form id="log-form" class="log-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password</label>
+        <input type="password" id="password"><br>
+        <button id="log-in-button" type="submit">Log In</button>
+      </form>
+    </section>
+    <section class="booking-display hidden"> 
     <div class="form-pending-display">
         <div class="form">
           <h1 class="form-header">Book a new trip:</h1>
@@ -40,7 +48,6 @@
       <div class="buttons">
         <button class="past-trips-button">Past Trips</button>
         <button class="upcoming-trips-button">Upcoming Trips</button>
-        <!-- <button>Book Trip</button> -->
       </div>
       <div id="past-trips-container" class="card-display past"></div>
     </section>  
