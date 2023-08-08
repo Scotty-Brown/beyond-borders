@@ -9,23 +9,23 @@ import './images/bb-NB.png'
 import './images/beyond-borders-logo-NB.png'
 
 import { promises } from './api';
-import { getTraveler, getTravelerTrips, getTotalSpentOnTrips } from './data-model';
-import { displayTrips, displayYTDSpend } from './dom-updates';
+import { getTraveler, getTravelerTrips, getTotalSpentOnTrips, createSelectionDestinations, fetchData, traveler } from './data-model';
+import { displayTrips, displayYTDSpend, displayUpcomingTrips } from './dom-updates';
 const pastTripsContainer = document.querySelector('.past-trips-container')
 
 
 /////////global variables////////////
-export const fetchData = {
-    // user: null,
-    travelers: [],
-    trips: [],
-    destinations: []
-}
+// export const fetchData = {
+//     // user: null,
+//     travelers: [],
+//     trips: [],
+//     destinations: []
+// }
 
-export let traveler = {
-    info: {},
-    trips: []
-}
+// export let traveler = {
+//     info: {},
+//     trips: []
+// }
 
 window.addEventListener('load', () => {
     Promise.all(promises)
@@ -40,6 +40,8 @@ window.addEventListener('load', () => {
     }).then(test => {
         displayTrips()
         displayYTDSpend()
+        createSelectionDestinations()
+        displayUpcomingTrips()
     })
 })
 
