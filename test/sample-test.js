@@ -106,7 +106,6 @@ describe('Destination Repository', () => {
   })
 
   it('Should return amount user has spent on all trips', () => {
-
     getTraveler(1)
     getTravelerTrips()
 
@@ -127,27 +126,56 @@ describe('Destination Repository', () => {
 
 describe('Create Element', () => {
 
+  let inputs
+
   beforeEach(() => {
     getTraveler(2)
     getTravelerTrips()
 
-    
-  })
-  
-  it('Should return an object for fetch Post', () => {
-    
-    let inputs = {
+    inputs = {
       date: "2023/09/16",
       numNights: 10,
       numGuests: 2,
       destination: 2
     }
     
+  })
+  
+  it('Should return an object for fetch Post', () => {
     let formObject = captureFormInput(inputs.date, inputs.numNights, inputs.numGuests, inputs.destination)
     
     expect(formObject).to.be.an('object')
     expect(formObject.duration).to.equal(10)
     expect(formObject.date).to.equal('2023/09/16')
+  })
+
+  it('Should return error if date field is empty', () => {
+    inputs.date = ''
+
+    let formObject = captureFormInput(inputs.date, inputs.numNights, inputs.numGuests, inputs.destination)
+    expect(formObject).to.be.a('string')
+    expect(formObject).to.equal('Missing form inputs')
+  })
+
+  it('Should return error if number of nights is empty', () => {
+    inputs.numNights = ''
+    let formObject = captureFormInput(inputs.date, inputs.numNights, inputs.numGuests, inputs.destination)
+    expect(formObject).to.be.a('string')
+    expect(formObject).to.equal('Missing form inputs')
+  })
+
+  it('Should return error if number of guests is empty', () => {
+    inputs.numGuests = ''
+    let formObject = captureFormInput(inputs.date, inputs.numNights, inputs.numGuests, inputs.destination)
+    expect(formObject).to.be.a('string')
+    expect(formObject).to.equal('Missing form inputs')
+  })
+
+  it('Should return error if destination is empty', () => {
+    inputs.destination = ''
+    let formObject = captureFormInput(inputs.date, inputs.numNights, inputs.numGuests, inputs.destination)
+    expect(formObject).to.be.a('string')
+    expect(formObject).to.equal('Missing form inputs')
   })
 
 })

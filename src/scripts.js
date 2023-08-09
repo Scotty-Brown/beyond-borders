@@ -72,13 +72,15 @@ upcomingTripsButton.addEventListener('click', () => {
 
 getEstimateButton.addEventListener('click', (e) => {
     e.preventDefault()
-
+    // console.log('dateinput', dateInput.value)
     tripCapture = captureFormInput(dateInput.value, numNightsInput.value, numGuestInput.value, destinationSelection.value)
-
+    if (tripCapture === undefined) {
+        return
+    } else {
     backToFormButton.classList.remove('hidden')
     bookTripButton.classList.remove('hidden')
     displayTripEstimate(tripCapture)
-
+}
 })
 
 backToFormButton.addEventListener('click', (e) => {

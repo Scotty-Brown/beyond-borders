@@ -46,9 +46,17 @@ h1 {
 }
 
 .log-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #04404070;
+  padding: 10%;
+  box-shadow: 0px 0px 12px 20px #044040c7;
+  border: 10px solid #044040;
+  transition: transform 0.2s ease-in-out;
+}
+.log-form:hover {
+  transform: scale(1.1);
 }
 
 .log-in-error {
@@ -145,12 +153,20 @@ h1 {
 }
 
 .buttons {
-  margin-left: -25px;
+  /* margin-left: -25px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  gap: 15px;
+  gap: 15px; */
+
+  margin-left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 25%;
 }
 
 button {
@@ -166,8 +182,16 @@ button {
 }
 
 
+
 button:hover {
   transform: scale(1.1);
+}
+button::after {
+  background-color: red;
+}
+
+button:active {
+  background-color: #e8aa33;
 }
 
 .form {

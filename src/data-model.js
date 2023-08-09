@@ -67,6 +67,11 @@ export const getTotalSpentOnTrips = () => {
 }
 
 export const captureFormInput = (date, numNights, numGuests, destination) => {
+    let formInputs = [date, numNights, numGuests, destination]
+    let checkValue = formInputs.find(input => input === '')
+    if (checkValue === '') {
+         return 'Missing form inputs'
+    } 
     const formattedDate = dayjs(date).format('YYYY/MM/DD')
     const tripRequest =  {
         "id": Date.now(),
@@ -121,4 +126,3 @@ export const captureFormInput = (date, numNights, numGuests, destination) => {
 //     }
 
 // }
-

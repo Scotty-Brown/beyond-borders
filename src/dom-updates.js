@@ -21,8 +21,13 @@ export const displayTrips = () => {
 export const displayUpcomingTrips = () => {
     const cardContainer = document.getElementById('past-trips-container')
     cardContainer.innerHTML = ''
+    const today = dayjs()
+    const formattedToday = today.format('YYYY/MM/DD')
+
     traveler.trips.forEach((element) => {
-        if (element.status === 'pending') {
+        const tripDate = dayjs(element.date)
+        const todaysDate = dayjs(formattedToday)
+        if (element.status === 'pending' && todaysDate.isBefore(tripDate)) {
         const cardElements = createTripCardElement(element)
         cardContainer.appendChild(cardElements)
     }
@@ -76,7 +81,7 @@ export const handleBackToFormClick = () => {
     const estimateCardElement = document.querySelector('.estimate-display-card')
     tripEstimateDisplay.classList.add('hidden')
     tripEstimateDisplay.removeChild(estimateCardElement)
-    bookForm.id = "booking-Form"
+    bookForm.id = "bookingForm"
 }
 
 export const createTripCardElement = (trip) => {
@@ -121,10 +126,8 @@ export const createTripCardElement = (trip) => {
 export const setDatePicker = (element) => {
     const today = dayjs()
     const formattedDay = today.format('YYYY-MM-DD')
-    console.log(formattedDay)
     element.setAttribute('min', formattedDay)
 }
-// const datePicker = document.getElementById('date-Picker')
 
 // export const clearForm = () => {
 //     dateInput.value = '' 
