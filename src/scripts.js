@@ -74,7 +74,8 @@ getEstimateButton.addEventListener('click', (e) => {
     e.preventDefault()
     // console.log('dateinput', dateInput.value)
     tripCapture = captureFormInput(dateInput.value, numNightsInput.value, numGuestInput.value, destinationSelection.value)
-    if (tripCapture === undefined) {
+    console.log(tripCapture)
+    if (tripCapture === 'Missing form inputs') {
         return
     } else {
     backToFormButton.classList.remove('hidden')
