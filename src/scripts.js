@@ -1,10 +1,6 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 const dayjs = require('dayjs')
-// An example of how you tell webpack to use a CSS (SCSS) file
-import './css/styles.css';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+import './css/styles.css';
 import './images/bb-NB.png'
 import './images/beyond-borders-logo-NB.png'
 
@@ -25,9 +21,6 @@ const dashboard = document.querySelector('.booking-display')
 const YTDSpend = document.querySelector('#ytd-spend')
 const datePicker = document.getElementById('datePicker')
 const logInErrorMessage = document.querySelector('.log-in-error')
-
-// const tripEstimateDisplay = document.querySelector('.trip-estimate-display')
-// const bookFormHidden = document.getElementById('hidden-form')
 
 const dateInput = document.querySelector('#datePicker')
 const numNightsInput = document.querySelector('#numNights')
@@ -72,9 +65,7 @@ upcomingTripsButton.addEventListener('click', () => {
 
 getEstimateButton.addEventListener('click', (e) => {
     e.preventDefault()
-    // console.log('dateinput', dateInput.value)
     tripCapture = captureFormInput(dateInput.value, numNightsInput.value, numGuestInput.value, destinationSelection.value)
-    console.log(tripCapture)
     if (tripCapture === 'Missing form inputs') {
         return
     } else {

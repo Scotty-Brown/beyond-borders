@@ -1,8 +1,5 @@
-* {
-  /* border: 3px blue solid; */
-}
-
 body {
+  font-family: 'Roboto', sans-serif;
   background: linear-gradient(#044040, #E8AA33);
   height: 97vh;
 }
@@ -73,6 +70,11 @@ h1 {
     height: 100%;
 }
 
+#past-trips-container {
+    background: #04404070;
+    box-shadow: -20px 1px 20px 20px #044040;
+}
+
 .card-display {
   width: 540px;
   height: 102%;
@@ -83,7 +85,6 @@ h1 {
   flex-wrap: wrap;
   overflow: auto;
 }
-
 
 .card-display img {
   width: 92%;
@@ -111,6 +112,7 @@ h1 {
 .card-display article:hover {
   transform: scale(1.1);
 }
+
 .trip-card-header {
   width: 100%;
   height: 51%;
@@ -147,6 +149,7 @@ h1 {
   text-align: center;
   margin: 0;
 }
+
 .trip-cost {
   color: antiquewhite;
   font-size: 23px;
@@ -154,20 +157,13 @@ h1 {
 }
 
 .buttons {
-  /* margin-left: -25px;
+  margin-left: 0px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: stretch;
   justify-content: flex-start;
-  gap: 15px; */
-
-  margin-left: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 15px;
-    width: 25%;
+  gap: 15px;
+  width: 25%;
 }
 
 button {
@@ -181,8 +177,6 @@ button {
   background: #044040b5;
   box-shadow: 0px 0px 5px 0px #e8aa33;
 }
-
-
 
 button:hover {
   transform: scale(1.1);
@@ -300,10 +294,9 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 9%;
+  padding-left: 5%;
   padding-right: 40px;
 }
-
 
 .hidden {
   display: none;

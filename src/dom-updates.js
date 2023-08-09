@@ -1,11 +1,8 @@
-
-import { use } from "chai";
 import { fetchData, traveler } from "./data-model";
 import { getTotalSpentOnTrips, getTraveler, getTravelerTrips, getDestinationDetails, getTripTotal } from "./data-model";
 
 const dayjs = require('dayjs')
 
-//////domUpdates/////////
 export const displayTrips = () => {
     const cardContainer = document.getElementById('past-trips-container')
     cardContainer.innerHTML = ''
@@ -15,7 +12,6 @@ export const displayTrips = () => {
         cardContainer.appendChild(cardElement)
         }
     });
-
 }
 
 export const displayUpcomingTrips = () => {
@@ -37,7 +33,7 @@ export const displayUpcomingTrips = () => {
 export const displayYTDSpend = () => {
     const totalDisplay = document.getElementById('ytd-spend')
     totalDisplay.innerHTML = ''
-    totalDisplay.innerHTML = `-Welcome- <br> ${traveler.info.name}! <br> <br> -YTD Spend- <br> $${getTotalSpentOnTrips()}`
+    totalDisplay.innerHTML = `-Welcome- <br> ${traveler.info.name} <br> <br> -YTD Spend- <br> $${getTotalSpentOnTrips()}`
 }
 
 export const displayTripEstimate = (trip) => {
@@ -130,11 +126,3 @@ export const setDatePicker = (element) => {
     const formattedDay = today.format('YYYY-MM-DD')
     element.setAttribute('min', formattedDay)
 }
-
-// export const clearForm = () => {
-//     dateInput.value = '' 
-//     numNightsInput.value = ''
-//     numGuestInput.value = ''
-//     destinationSelection.value = ''
-// }
-

@@ -1,5 +1,3 @@
-import { displayYTDSpend } from './dom-updates'
-
 const dayjs = require('dayjs')
 
 export const fetchData = {
@@ -15,8 +13,6 @@ export let traveler = {
     login: false
 }
 
-
-////////dataModel//////////
 export const getTraveler = (id) => {
     traveler.info = fetchData.travelers.find((user) => user.id === id)
     if (traveler.info === undefined) {
@@ -85,5 +81,3 @@ export const captureFormInput = (date, numNights, numGuests, destination) => {
     }
     return tripRequest
 }
-
-

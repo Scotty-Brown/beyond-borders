@@ -1,9 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-// import { expect } from 'chai';
-
-// import { captureFormInput, fetchData, traveler } from '../src/data-model';
 import { getTraveler, getTravelerTrips, getDestinationDetails, getTripTotal, getTotalSpentOnTrips, captureFormInput, fetchData, traveler } from '../src/data-model';
 import { sampleTravelerData } from './sample-traveler-data';
 
@@ -124,7 +121,7 @@ describe('Destination Repository', () => {
   })
 })
 
-describe('Create Element', () => {
+describe('Create element', () => {
 
   let inputs
 
