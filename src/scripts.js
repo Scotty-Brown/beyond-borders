@@ -9,8 +9,8 @@ import './images/bb-NB.png'
 import './images/beyond-borders-logo-NB.png'
 
 import { promises, postUserTrip, fetchUserTrips } from './api';
-import { getTraveler, getTravelerTrips, getTotalSpentOnTrips, createSelectionDestinations, fetchData, traveler, captureFormInput, getTripTotal, handleLogIn } from './data-model';
-import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick } from './dom-updates';
+import { getTraveler, getTravelerTrips, getTotalSpentOnTrips,  fetchData, traveler, captureFormInput, getTripTotal } from './data-model';
+import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick, handleLogIn, createSelectionDestinations } from './dom-updates';
 
 const pastTripsContainer = document.querySelector('.past-trips-container')
 const pastTripsButton = document.querySelector('.past-trips-button')
@@ -23,6 +23,8 @@ const logInButton = document.querySelector('#log-in-button')
 const logInForm = document.querySelector('.log-In')
 const dashboard = document.querySelector('.booking-display')
 const YTDSpend = document.querySelector('#ytd-spend')
+// const tripEstimateDisplay = document.querySelector('.trip-estimate-display')
+// const bookFormHidden = document.getElementById('hidden-form')
 
 const dateInput = document.querySelector('#date-Picker')
 const numNightsInput = document.querySelector('#num-Nights')
@@ -85,20 +87,16 @@ bookTripButton.addEventListener('click', (e) => {
     tripCapture = captureFormInput(dateInput.value, numNightsInput.value, numGuestInput.value, destinationSelection.value)
 
     postUserTrip(tripCapture)
-    .then(res => {
+        .then(res => {
             fetchUserTrips('trips')
             .then(results => {
-                console.log('results', results.trips)
-                console.log('before', traveler.trips)
                 fetchData.trips = results.trips
-                console.log('after', traveler.trips)
-
             }).then(data => {
-                console.log('hey')
                 getTravelerTrips()
                 displayUpcomingTrips()
             })
         })
-        
-        
+    backToFormButton.classList.add('hidden')
+    bookTripButton.classList.add('hidden')
+     handleBackToFormClick()   
 })
