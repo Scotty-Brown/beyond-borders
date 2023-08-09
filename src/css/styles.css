@@ -1,8 +1,5 @@
-* {
-  /* border: 3px blue solid; */
-}
-
 body {
+  font-family: 'Roboto', sans-serif;
   background: linear-gradient(#044040, #E8AA33);
   height: 97vh;
 }
@@ -37,12 +34,31 @@ h1 {
   box-shadow: -6px -1px 20px 20px #044040c7;
 }
 
-.log-In {
+.log-in {
   display: flex;
   width: 80%;
   height: 100%;
   justify-content: center;
   align-items: center;
+}
+
+.log-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #04404070;
+  padding: 10%;
+  box-shadow: 0px 0px 12px 20px #044040c7;
+  border: 10px solid #044040;
+  transition: transform 0.2s ease-in-out;
+}
+.log-form:hover {
+  transform: scale(1.1);
+}
+
+.log-in-error {
+    font-size: 20px;
+    color: darkred;
 }
 
 .booking-display {
@@ -52,6 +68,11 @@ h1 {
     justify-content: space-evenly;
     gap: 4%;
     height: 100%;
+}
+
+#past-trips-container {
+    background: #04404070;
+    box-shadow: -20px 1px 20px 20px #044040;
 }
 
 .card-display {
@@ -64,7 +85,6 @@ h1 {
   flex-wrap: wrap;
   overflow: auto;
 }
-
 
 .card-display img {
   width: 92%;
@@ -92,6 +112,7 @@ h1 {
 .card-display article:hover {
   transform: scale(1.1);
 }
+
 .trip-card-header {
   width: 100%;
   height: 51%;
@@ -112,7 +133,7 @@ h1 {
 
 .trip-card-body {
   width: 100%;
-  height: 40%;
+  height: 47%;
   background: linear-gradient(#044040, #E8AA33);
   border: outset 5px #E8AA33;
   border-top: none;
@@ -128,18 +149,21 @@ h1 {
   text-align: center;
   margin: 0;
 }
+
 .trip-cost {
   color: antiquewhite;
   font-size: 23px;
+  margin-top: 0;
 }
 
 .buttons {
-  margin-left: -25px;
+  margin-left: 0px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: stretch;
   justify-content: flex-start;
   gap: 15px;
+  width: 25%;
 }
 
 button {
@@ -154,9 +178,15 @@ button {
   box-shadow: 0px 0px 5px 0px #e8aa33;
 }
 
-
 button:hover {
   transform: scale(1.1);
+}
+button::after {
+  background-color: red;
+}
+
+button:active {
+  background-color: #e8aa33;
 }
 
 .form {
@@ -173,7 +203,7 @@ button:hover {
   width: 100%;
 }
 
-#booking-Form {
+#bookingForm {
   width: 300%;
   align-items: center;
   display: flex;
@@ -226,6 +256,7 @@ input {
   width: 70%;
   padding:10px;
   border-radius:10px;
+  text-align: center;
 }
 
 .back-to-form-button,
@@ -263,10 +294,9 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 9%;
+  padding-left: 5%;
   padding-right: 40px;
 }
-
 
 .hidden {
   display: none;

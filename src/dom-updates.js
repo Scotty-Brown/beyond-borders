@@ -1,8 +1,8 @@
-
-import { use } from "chai";
 import { fetchData, traveler } from "./data-model";
 import { getTotalSpentOnTrips, getTraveler, getTravelerTrips, getDestinationDetails, getTripTotal } from "./data-model";
-//////domUpdates/////////
+
+const dayjs = require('dayjs')
+
 export const displayTrips = () => {
     const cardContainer = document.getElementById('past-trips-container')
     cardContainer.innerHTML = ''
@@ -12,14 +12,18 @@ export const displayTrips = () => {
         cardContainer.appendChild(cardElement)
         }
     });
-
 }
 
 export const displayUpcomingTrips = () => {
     const cardContainer = document.getElementById('past-trips-container')
     cardContainer.innerHTML = ''
+    const today = dayjs()
+    const formattedToday = today.format('YYYY/MM/DD')
+
     traveler.trips.forEach((element) => {
-        if (element.status === 'pending') {
+        const tripDate = dayjs(element.date)
+        const todaysDate = dayjs(formattedToday)
+        if (element.status === 'pending' && todaysDate.isBefore(tripDate)) {
         const cardElements = createTripCardElement(element)
         cardContainer.appendChild(cardElements)
     }
@@ -29,12 +33,12 @@ export const displayUpcomingTrips = () => {
 export const displayYTDSpend = () => {
     const totalDisplay = document.getElementById('ytd-spend')
     totalDisplay.innerHTML = ''
-    totalDisplay.innerHTML = `-Welcome- <br> ${traveler.info.name}! <br> <br> -YTD Spend- <br> $${getTotalSpentOnTrips()}`
+    totalDisplay.innerHTML = `-Welcome- <br> ${traveler.info.name} <br> <br> -YTD Spend- <br> $${getTotalSpentOnTrips()}`
 }
 
 export const displayTripEstimate = (trip) => {
     const estimateDisplay = document.getElementById('trip-estimate-display')
-    const form = document.getElementById('booking-Form')
+    const form = document.getElementById('bookingForm')
     form.id = 'hidden-form'
     estimateDisplay.classList.remove('hidden')
     estimateDisplay.innerHTML = ''
@@ -55,11 +59,11 @@ export const createSelectionDestinations = () => {
 
 export const handleLogIn = (userName, passWord) => {
     const prefix = 'traveler'
+    const numValue = userName.substring(prefix.length)
+    const userNum = parseInt(numValue)
     if (passWord != 'travel') {
-        return console.log('Incorrect Password')
-    } else if (userName.startsWith(prefix)) {
-        const numValue = userName.substring(prefix.length)
-        const userNum = parseInt(numValue)
+        return 'Incorrect Password'
+    } else if (userName.startsWith(prefix) && userNum < 51) {
         getTraveler(userNum, fetchData)
         getTravelerTrips()
         displayYTDSpend()
@@ -70,18 +74,16 @@ export const handleLogIn = (userName, passWord) => {
 export const handleBackToFormClick = () => {
     const tripEstimateDisplay = document.querySelector('.trip-estimate-display')
     const bookForm = document.getElementById('hidden-form')
-    // const clearForm = document.querySelectorAll('.form-remove')
-    // console.log(clearForm)
     const estimateCardElement = document.querySelector('.estimate-display-card')
     tripEstimateDisplay.classList.add('hidden')
     tripEstimateDisplay.removeChild(estimateCardElement)
-    bookForm.id = "booking-Form"
+    bookForm.id = "bookingForm"
 }
 
 export const createTripCardElement = (trip) => {
     const destinationDetails = getDestinationDetails(trip)
     const country = destinationDetails.destination.split(',')[1]
-    const tripTotal = (getTripTotal(trip)).toLocaleString()
+    const tripTotal = getTripTotal(trip)
     const numNights = trip.duration - 1
     const cardElement = document.createElement('article')
     if (trip.status === 'approved') {
@@ -93,7 +95,7 @@ export const createTripCardElement = (trip) => {
         </div>
         <div class="trip-card-body">
             <p class="trip-details">On ${trip.date}, you spent ${trip.duration} days and ${numNights} nights with ${trip.travelers} guests in beautiful ${country}!</p>
-            <p class="trip-cost">Total: $${tripTotal}</p>
+            <p class="trip-cost">Total: $${tripTotal.toFixed(2)}</p>
         </div>
     `
     return cardElement
@@ -109,7 +111,9 @@ export const createTripCardElement = (trip) => {
             <p class="trip-details">Duration: ${trip.duration}</p>
             <p class="trip-details">Guests: ${trip.travelers}</p>
             <p class="trip-details">Status: ${trip.status}</p>
-            <p class="trip-cost">Est. Trip Total: $${tripTotal}</p>
+            <p class="trip-details">Lodging: $${destinationDetails.estimatedLodgingCostPerDay}/day per person</p>
+            <p class="trip-details">Flight: $${destinationDetails.estimatedFlightCostPerPerson}</p>
+            <p class="trip-cost">Trip Total: $${tripTotal.toFixed(2)}</p>
         </div>
         `
         return cardElement
@@ -117,10 +121,8 @@ export const createTripCardElement = (trip) => {
 
 }
 
-// export const clearForm = () => {
-//     dateInput.value = '' 
-//     numNightsInput.value = ''
-//     numGuestInput.value = ''
-//     destinationSelection.value = ''
-// }
-
+export const setDatePicker = (element) => {
+    const today = dayjs()
+    const formattedDay = today.format('YYYY-MM-DD')
+    element.setAttribute('min', formattedDay)
+}
