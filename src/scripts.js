@@ -20,17 +20,18 @@ const backToFormButton = document.querySelector('#back-to-form-button')
 const bookTripButton = document.querySelector('#book-trip-button')
 const bookForm = document.querySelector('#booking-form')
 const logInButton = document.querySelector('#log-in-button')
-const logInForm = document.querySelector('.log-In')
+const logInForm = document.querySelector('.log-in')
 const dashboard = document.querySelector('.booking-display')
 const YTDSpend = document.querySelector('#ytd-spend')
-const datePicker = document.getElementById('date-Picker')
+const datePicker = document.getElementById('datePicker')
+const logInErrorMessage = document.querySelector('.log-in-error')
 
 // const tripEstimateDisplay = document.querySelector('.trip-estimate-display')
 // const bookFormHidden = document.getElementById('hidden-form')
 
-const dateInput = document.querySelector('#date-Picker')
-const numNightsInput = document.querySelector('#num-Nights')
-const numGuestInput = document.querySelector('#num-Guests')
+const dateInput = document.querySelector('#datePicker')
+const numNightsInput = document.querySelector('#numNights')
+const numGuestInput = document.querySelector('#numGuests')
 const destinationSelection = document.querySelector('#destination')
 const userName = document.querySelector('#username')
 const passWord = document.querySelector('#password')
@@ -56,6 +57,8 @@ logInButton.addEventListener('click', (e) => {
         dashboard.classList.remove('hidden')
         YTDSpend.classList.remove('hidden')
         setDatePicker(datePicker)
+    } else {
+        logInErrorMessage.classList.remove('hidden')
     }
 })
 

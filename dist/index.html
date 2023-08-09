@@ -12,12 +12,13 @@
       <img class="logo" src="./images/bb-NB.png" alt="turing logo">
       <h1 class="hidden" id="ytd-spend">YTD Spend</h1>
     </header>
-    <section class="log-In">
+    <section class="log-in">
       <form id="log-form" class="log-form">
         <label for="username">Username:</label>
         <input type="text" id="username" required><br>
         <label for="password">Password</label>
         <input type="password" id="password"><br>
+        <p class="log-in-error hidden">Incorrect Username/Password</p>
         <button id="log-in-button" type="submit">Log In</button>
       </form>
     </section>
@@ -25,13 +26,13 @@
     <div class="form-pending-display">
         <div class="form">
           <h1 class="form-header">Book a new trip:</h1>
-            <form id="booking-Form" class="hidden">
-              <label for="date-Picker">Select Date:</label>
-              <input type="date" id="date-Picker" required><br>
-              <label for="num-Nights">Number of Nights:</label>
-              <input type="number" id="num-Nights" min="1" required><br>
-              <label for="num-Guests">Number of Guests:</label>
-              <input type="number" id="num-Guests" min="1" required><br>
+            <form id="bookingForm" class="hidden">
+              <label for="datePicker">Select Date:</label>
+              <input type="date" id="datePicker" required><br>
+              <label for="numNights">Number of Nights:</label>
+              <input type="number" id="numNights" min="1" required><br>
+              <label for="numGuests">Number of Guests:</label>
+              <input type="number" id="numGuests" min="1" required><br>
               <label for="destination">Select Destination:</label>
               <select id="destination" required>
                 <option value="" disabled selected>Select Destination</option>

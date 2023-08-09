@@ -37,7 +37,7 @@ export const displayYTDSpend = () => {
 
 export const displayTripEstimate = (trip) => {
     const estimateDisplay = document.getElementById('trip-estimate-display')
-    const form = document.getElementById('booking-Form')
+    const form = document.getElementById('bookingForm')
     form.id = 'hidden-form'
     estimateDisplay.classList.remove('hidden')
     estimateDisplay.innerHTML = ''
@@ -58,11 +58,11 @@ export const createSelectionDestinations = () => {
 
 export const handleLogIn = (userName, passWord) => {
     const prefix = 'traveler'
+    const numValue = userName.substring(prefix.length)
+    const userNum = parseInt(numValue)
     if (passWord != 'travel') {
-        return console.log('Incorrect Password')
-    } else if (userName.startsWith(prefix)) {
-        const numValue = userName.substring(prefix.length)
-        const userNum = parseInt(numValue)
+        return 'Incorrect Password'
+    } else if (userName.startsWith(prefix) && userNum < 51) {
         getTraveler(userNum, fetchData)
         getTravelerTrips()
         displayYTDSpend()
@@ -73,8 +73,6 @@ export const handleLogIn = (userName, passWord) => {
 export const handleBackToFormClick = () => {
     const tripEstimateDisplay = document.querySelector('.trip-estimate-display')
     const bookForm = document.getElementById('hidden-form')
-    // const clearForm = document.querySelectorAll('.form-remove')
-    // console.log(clearForm)
     const estimateCardElement = document.querySelector('.estimate-display-card')
     tripEstimateDisplay.classList.add('hidden')
     tripEstimateDisplay.removeChild(estimateCardElement)
