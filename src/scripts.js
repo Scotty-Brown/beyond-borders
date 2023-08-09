@@ -2,7 +2,6 @@ const dayjs = require('dayjs')
 
 import './css/styles.css';
 import './images/bb-NB.png'
-import './images/beyond-borders-logo-NB.png'
 
 import { promises, postUserTrip, fetchUserTrips } from './api';
 import { getTraveler, getTravelerTrips, getTotalSpentOnTrips,  fetchData, traveler, captureFormInput, getTripTotal } from './data-model';
