@@ -1,7 +1,6 @@
 const dayjs = require('dayjs')
 
 export const fetchData = {
-    // user: null,
     travelers: [],
     trips: [],
     destinations: []
@@ -59,7 +58,7 @@ export const getTotalSpentOnTrips = () => {
         total += getTripTotal(trip)
         return total
         }, 0)
-        return totalSpentAllTime.toFixed(2)
+        return Number(totalSpentAllTime.toFixed(2))
 }
 
 export const captureFormInput = (date, numNights, numGuests, destination) => {
