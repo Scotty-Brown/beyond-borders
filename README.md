@@ -13,6 +13,7 @@ Introducing Beyond Borders: The application that simplifies your travel. With ou
 6. Navigate to `http://localhost:8080/` in your web browser
 
 ## Preview of App:
+![Beyond Borders](https://media.giphy.com/media/OVV2FFV7QIr6OaR7Ie/giphy.gif)
 
 ## Context:
 This solo project took approximately 20 hours to complete. I am currently in my final week of Mod 2 at Turing School of Software and Design
@@ -41,6 +42,9 @@ This solo project took approximately 20 hours to complete. I am currently in my 
 
 ## Wins + Challenges:
 #### Wins:
-
+- I successfully fetched, parsed and displayed data from 3 separate URL sources. I also posted to the API.
+- Implemented a login page for the first time with up to 50 different usernames.
+- Test all functions that manipulate the data
   
 #### Challenges:
+- Using dayjs to compare dates was difficult at first, I spent some time studing dayjs functionality and was able to successfully compare two dats to prevent users from selecting a date in the past when booking a new trip
