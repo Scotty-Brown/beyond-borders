@@ -150,6 +150,7 @@ h1 {
 .trip-cost {
   color: antiquewhite;
   font-size: 23px;
+  margin-top: 0;
 }
 
 .buttons {

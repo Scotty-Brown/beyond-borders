@@ -63,7 +63,7 @@ export const getTotalSpentOnTrips = () => {
         total += getTripTotal(trip)
         return total
         }, 0)
-        return totalSpentAllTime
+        return totalSpentAllTime.toFixed(2)
 }
 
 export const captureFormInput = (date, numNights, numGuests, destination) => {

@@ -87,7 +87,7 @@ export const handleBackToFormClick = () => {
 export const createTripCardElement = (trip) => {
     const destinationDetails = getDestinationDetails(trip)
     const country = destinationDetails.destination.split(',')[1]
-    const tripTotal = (getTripTotal(trip)).toLocaleString()
+    const tripTotal = getTripTotal(trip)
     const numNights = trip.duration - 1
     const cardElement = document.createElement('article')
     if (trip.status === 'approved') {
@@ -99,7 +99,7 @@ export const createTripCardElement = (trip) => {
         </div>
         <div class="trip-card-body">
             <p class="trip-details">On ${trip.date}, you spent ${trip.duration} days and ${numNights} nights with ${trip.travelers} guests in beautiful ${country}!</p>
-            <p class="trip-cost">Total: $${tripTotal}</p>
+            <p class="trip-cost">Total: $${tripTotal.toFixed(2)}</p>
         </div>
     `
     return cardElement
@@ -115,7 +115,9 @@ export const createTripCardElement = (trip) => {
             <p class="trip-details">Duration: ${trip.duration}</p>
             <p class="trip-details">Guests: ${trip.travelers}</p>
             <p class="trip-details">Status: ${trip.status}</p>
-            <p class="trip-cost">Est. Trip Total: $${tripTotal}</p>
+            <p class="trip-details">Lodging: $${destinationDetails.estimatedLodgingCostPerDay}/day per person</p>
+            <p class="trip-details">Flight: $${destinationDetails.estimatedFlightCostPerPerson}</p>
+            <p class="trip-cost">Trip Total: $${tripTotal.toFixed(2)}</p>
         </div>
         `
         return cardElement
