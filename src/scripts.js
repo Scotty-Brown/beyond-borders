@@ -10,7 +10,7 @@ import './images/beyond-borders-logo-NB.png'
 
 import { promises, postUserTrip, fetchUserTrips } from './api';
 import { getTraveler, getTravelerTrips, getTotalSpentOnTrips,  fetchData, traveler, captureFormInput, getTripTotal } from './data-model';
-import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick, handleLogIn, createSelectionDestinations } from './dom-updates';
+import { displayTrips, displayYTDSpend, displayUpcomingTrips, displayTripEstimate, handleBackToFormClick, handleLogIn, createSelectionDestinations, setDatePicker } from './dom-updates';
 
 const pastTripsContainer = document.querySelector('.past-trips-container')
 const pastTripsButton = document.querySelector('.past-trips-button')
@@ -23,6 +23,8 @@ const logInButton = document.querySelector('#log-in-button')
 const logInForm = document.querySelector('.log-In')
 const dashboard = document.querySelector('.booking-display')
 const YTDSpend = document.querySelector('#ytd-spend')
+const datePicker = document.getElementById('date-Picker')
+
 // const tripEstimateDisplay = document.querySelector('.trip-estimate-display')
 // const bookFormHidden = document.getElementById('hidden-form')
 
@@ -37,6 +39,7 @@ const passWord = document.querySelector('#password')
 let tripCapture = {}
 
 window.addEventListener('load', () => {
+
     Promise.all(promises)
     .then(results => {
         fetchData.travelers = results[0].travelers
@@ -52,6 +55,7 @@ logInButton.addEventListener('click', (e) => {
         logInForm.classList.add('hidden')
         dashboard.classList.remove('hidden')
         YTDSpend.classList.remove('hidden')
+        setDatePicker(datePicker)
     }
 })
 

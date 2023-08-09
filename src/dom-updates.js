@@ -2,6 +2,9 @@
 import { use } from "chai";
 import { fetchData, traveler } from "./data-model";
 import { getTotalSpentOnTrips, getTraveler, getTravelerTrips, getDestinationDetails, getTripTotal } from "./data-model";
+
+const dayjs = require('dayjs')
+
 //////domUpdates/////////
 export const displayTrips = () => {
     const cardContainer = document.getElementById('past-trips-container')
@@ -116,6 +119,14 @@ export const createTripCardElement = (trip) => {
     }
 
 }
+
+export const setDatePicker = (element) => {
+    const today = dayjs()
+    const formattedDay = today.format('YYYY-MM-DD')
+    console.log(formattedDay)
+    element.setAttribute('min', formattedDay)
+}
+// const datePicker = document.getElementById('date-Picker')
 
 // export const clearForm = () => {
 //     dateInput.value = '' 

@@ -81,6 +81,8 @@ export const captureFormInput = (date, numNights, numGuests, destination) => {
     return tripRequest
 }
 
+
+
 // export const createTripCardElement = (trip) => {
 //     const destinationDetails = getDestinationDetails(trip)
 //     const country = destinationDetails.destination.split(',')[1]
