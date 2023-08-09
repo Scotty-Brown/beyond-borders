@@ -38,7 +38,7 @@ window.addEventListener('load', () => {
         fetchData.travelers = results[0].travelers
         fetchData.trips = results[1].trips
         fetchData.destinations = results[2].destinations
-    })
+    }).catch(error => console.log('ERROR', error))
 })
 
 logInButton.addEventListener('click', (e) => {
