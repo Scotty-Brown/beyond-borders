@@ -19,7 +19,7 @@ main {
  background: #044040;
  margin-left: -8px;
  margin-bottom: -7px;
- box-shadow: 20px 0 #044040;
+ box-shadow: 20px 0px 20px 20px #044040;
  background: linear-gradient(#044040, #E8AA33);
 }
 
@@ -34,7 +34,7 @@ h1 {
   font-size: 20px;
   color: antiquewhite;
   background: #044040;
-  box-shadow: -6px -1px 20px 20px #044040;
+  box-shadow: -6px -1px 20px 20px #044040c7;
 }
 
 .log-In {
